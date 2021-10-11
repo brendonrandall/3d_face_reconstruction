@@ -29,3 +29,7 @@ sp = predictor(img, rect)
 landmarks = np.array([[p.x, p.y] for p in sp.parts()])
 
 print(landmarks)
+
+f = open( 'inputimage.txt', 'w' )
+f.write( landmarks )
+f.close()
