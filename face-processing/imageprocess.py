@@ -2,6 +2,8 @@
 import sys
 import argparse
 from pathlib import Path
+from shutil import copyfile
+
 import numpy as np
 import dlib
 import imutils
@@ -10,13 +12,19 @@ import matplotlib.pyplot as plt
 from skimage import io
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-f", "--file", dest="input_image", required="TRUE", type=argparse.FileType('r'))
-#parser.add_argument("-p", "--predictor", dest="landmark_predictor", required="TRUE", type=argparse.FileType('r'))
+parser.add_argument("-i", "--image", dest="input_image", required="TRUE", type=argparse.FileType('r'))
+parser.add_argument("-d","--dataset",dest="dataset_name", required="TRUE")
 
 p = parser.parse_args()
 
 print(dlib.__version__)
 print(imutils.__version__)
+
+output_path = os.path.join('../datasets/', dataset_name)
+if not os.path.exists(output_path):
+    os.makedirs(output_path, exist_ok=True)
+output_detections_path = os.path.join(output_path,'detections')
+output_detections_file = os.path.join(output_detections_path,dataset_name,'.txt')
 
 predictor_path = "shape_predictor_5_face_landmarks.dat"
 
@@ -38,6 +46,8 @@ print(landmarks)
 
 #np.savetxt("inputimage.txt",x)
 mat = np.matrix(landmarks)
-with open('inputimage.txt','wb') as f:
+with open(output_detections_file,'wb') as f:
     for line in mat:
         np.savetxt(f, line, fmt='%.2f')
+
+
