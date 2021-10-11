@@ -29,7 +29,7 @@ predictor_path = "shape_predictor_68_face_landmarks.dat"
 face_predictor = dlib.shape_predictor(predictor_path)
 
 
-img = io.imread(p.input_image)
+img = io.imread("inputimage.jpg")
 
 dets = face_detector(img)
 
