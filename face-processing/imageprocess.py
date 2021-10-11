@@ -30,7 +30,7 @@ landmarks = np.array([[p.x, p.y] for p in sp.parts()])
 
 print(landmarks)
 for x in landmarks:
-print(x)
+    print(x)
     
 f = open( 'inputimage.txt', 'w' )
 #f.write( landmarks )
