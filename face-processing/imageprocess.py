@@ -24,7 +24,7 @@ face_detector = dlib.get_frontal_face_detector()
 
 #Calling a face landmark detection tool
 #predictor_path = p.landmark_predictor
-predictor_path = "shape_predictor_68_face_landmarks.dat"
+predictor_path = "shape_predictor_5_face_landmarks.dat"
 
 face_predictor = dlib.shape_predictor(predictor_path)
 
