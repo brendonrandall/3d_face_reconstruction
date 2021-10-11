@@ -29,6 +29,7 @@ cp -r ./insightface/recognition/arcface_torch/ ./models/
 ```
 conda install -c conda-forge cmake
 conda install -c conda-forge dlib
+conda install -c conda-forge imutils
 ```
 
 ## Inference with a pre-trained model

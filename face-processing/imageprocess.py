@@ -23,11 +23,11 @@ print(imutils.__version__)
 face_detector = dlib.get_frontal_face_detector()
 
 #Calling a face landmark detection tool
-predictor_path = args.landmark_predictor
+predictor_path = p.landmark_predictor
 face_predictor = dlib.shape_predictor(predictor_path)
 
 
-img = io.imread(args.input_image)
+img = io.imread(p.input_image)
 
 dets = face_detector(img)
 
