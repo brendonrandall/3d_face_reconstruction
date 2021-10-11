@@ -1,4 +1,4 @@
-name: deep3d_pytorch
+name: 3d_face_reconstruction
 channels:
   - pytorch
   - conda-forge
