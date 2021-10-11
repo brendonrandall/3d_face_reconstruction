@@ -24,6 +24,13 @@ cd ..    # ./3d_face_reconstruction
 git clone https://github.com/deepinsight/insightface.git
 cp -r ./insightface/recognition/arcface_torch/ ./models/
 ```
+
+4. Install CMAKE and DLIB
+```
+conda install -c conda-forge cmake
+conda install -c conda-forge dlib
+```
+
 ## Inference with a pre-trained model
 
 ### Prepare prerequisite models
