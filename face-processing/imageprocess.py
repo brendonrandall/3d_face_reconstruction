@@ -45,7 +45,3 @@ for b in range(68):
     vec[b][1] = shape.part(b).y
 
 print(vec)
-
-f = open( 'inputimage.txt', 'w' )
-f.write( vec )
-f.close()
