@@ -16,15 +16,15 @@ parser.add_argument("-i", "--image", dest="input_image", required="TRUE", type=a
 
 args = parser.parse_args()
 
-print(dlib.__version__)
-print(imutils.__version__)
+#print(dlib.__version__)
+#print(imutils.__version__)
 input_image_path = os.path.abspath(args.input_image.name)
 input_image_file = args.input_image.name
 dataset_name = Path(input_image_path).stem
 
-print(os.path.abspath(args.input_image.name))
-print(args.input_image.name)
-print(Path(os.path.abspath(args.input_image.name)).stem)
+#print(os.path.abspath(args.input_image.name))
+#print(args.input_image.name)
+#print(Path(os.path.abspath(args.input_image.name)).stem)
 
 
 output_path = os.path.join('../datasets/', dataset_name)
@@ -60,3 +60,4 @@ with open(output_detections_file,'wb') as f:
         np.savetxt(f, line, fmt='%.2f')
 
 
+copy(input_image_path,output_path)
