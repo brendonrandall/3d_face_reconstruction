@@ -19,7 +19,11 @@ p = parser.parse_args()
 
 print(dlib.__version__)
 print(imutils.__version__)
+print(os.path.abspath(p.input_image.name))
+print(p.input_image.name)
+print(Path(os.path.abspath(p.input_image.name)).stem)
 
+sys.exit()
 output_path = os.path.join('../datasets/', dataset_name)
 if not os.path.exists(output_path):
     os.makedirs(output_path, exist_ok=True)
