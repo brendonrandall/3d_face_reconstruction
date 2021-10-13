@@ -1,4 +1,8 @@
-﻿### IGNORE JETBRAINS ###
+﻿**/checkpoints/**/*.pth
+**/01_MorphableModel.mat
+**/Exp_Pca.bin
+
+### IGNORE JETBRAINS ###
 .idea
 
 ### DEFAULT CUDA ###
