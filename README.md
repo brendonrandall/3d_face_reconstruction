@@ -2,6 +2,7 @@
 
 ## Requirements
 **This implementation is only tested under Ubuntu environment with Nvidia GPUs and CUDA installed.**
+**Some operations require a higher buffer for git, please ensure `git config http.postBuffer 524288000` is set**
 
 ## Installation
 1. Clone the repository and set up a conda environment with all dependencies as follows:
