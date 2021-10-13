@@ -2,7 +2,7 @@
 import sys
 import argparse
 from pathlib import Path
-from shutil import copyfile
+import shutil
 
 import numpy as np
 import dlib
@@ -60,4 +60,4 @@ with open(output_detections_file,'wb') as f:
         np.savetxt(f, line, fmt='%.2f')
 
 
-copy(input_image_path,output_path)
+copy2(input_image_path,output_path)
