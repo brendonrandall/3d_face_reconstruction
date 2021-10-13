@@ -31,7 +31,7 @@ output_path = os.path.join('../datasets/', dataset_name)
 if not os.path.exists(output_path):
     os.makedirs(output_path, exist_ok=True)
 output_detections_path = os.path.join(output_path,'detections')
-output_detections_file = os.path.join(output_detections_path,dataset_name,'.txt')
+output_detections_file = os.path.join(output_detections_path,dataset_name+'.txt')
 
 predictor_path = "shape_predictor_5_face_landmarks.dat"
 
