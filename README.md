@@ -2,7 +2,19 @@
 
 ## Requirements
 **This implementation is only tested under Ubuntu environment with Nvidia GPUs and CUDA installed.**
+
 **Some operations require a higher buffer for git, please ensure `git config http.postBuffer 524288000` is set**
+
+**May require a GCC update to ensure v7 available ATM, please follow along
+```
+sudo apt-get install gcc-7 g++-7
+sudo update-alternatives --remove-all gcc
+sudo update-alternatives --remove-all g++
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
+```**
 
 ## Installation
 1. Clone the repository and set up a conda environment with all dependencies as follows:
