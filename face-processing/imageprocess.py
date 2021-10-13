@@ -60,4 +60,4 @@ with open(output_detections_file,'wb') as f:
         np.savetxt(f, line, fmt='%.2f')
 
 
-copy2(input_image_path,output_path)
+shutil.copy2(input_image_path,output_path)
