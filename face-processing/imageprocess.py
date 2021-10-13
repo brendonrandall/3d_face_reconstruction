@@ -13,17 +13,20 @@ from skimage import io
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", "--image", dest="input_image", required="TRUE", type=argparse.FileType('r'))
-parser.add_argument("-d","--dataset",dest="dataset_name", required="TRUE")
 
-p = parser.parse_args()
+args = parser.parse_args()
 
 print(dlib.__version__)
 print(imutils.__version__)
-print(os.path.abspath(p.input_image.name))
-print(p.input_image.name)
-print(Path(os.path.abspath(p.input_image.name)).stem)
+input_image_path = os.path.abspath(args.input_image.name)
+input_image_file = args.input_image.name
+dataset_name = Path(input_image_path).stem
 
-sys.exit()
+print(os.path.abspath(args.input_image.name))
+print(args.input_image.name)
+print(Path(os.path.abspath(args.input_image.name)).stem)
+
+
 output_path = os.path.join('../datasets/', dataset_name)
 if not os.path.exists(output_path):
     os.makedirs(output_path, exist_ok=True)
@@ -34,7 +37,7 @@ predictor_path = "shape_predictor_5_face_landmarks.dat"
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(predictor_path)
-img = dlib.load_rgb_image(p.input_image)
+img = dlib.load_rgb_image(input_image_path)
 
 rect = detector(img)[0]
 sp = predictor(img, rect)
