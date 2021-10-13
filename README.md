@@ -5,7 +5,7 @@
 
 **Some operations require a higher buffer for git, please ensure `git config http.postBuffer 524288000` is set**
 
-**May require a GCC update to ensure v7 available ATM, please follow along**
+**May require a GCC update to ensure v7 available ATM, please follow along if necessary**
 ```
 sudo apt-get install gcc-7 g++-7
 sudo update-alternatives --remove-all gcc
@@ -186,7 +186,6 @@ By default, the script uses a batchsize of 32 and will train the model with 20 e
 
 To use a trained model, see [Inference](https://github.com/sicxu/3d_face_reconstruction#inference-with-a-pre-trained-model) section.
 ## Contact
-If you have any questions, please contact the paper authors.
 
 ## Citation
 
@@ -203,3 +202,17 @@ The face images on this page are from the public [CelebA](http://mmlab.ie.cuhk.e
 
 Part of the code in this implementation takes [CUT](https://github.com/taesungp/contrastive-unpaired-translation) as a reference.
 
+
+
+
+
+
+
+## Additonal install helpers
+
+
+https://gist.github.com/wangruohui/df039f0dc434d6486f5d4d098aa52d07
+
+https://medium.com/@stephengregory_69986/installing-cuda-10-1-on-ubuntu-20-04-e562a5e724a0
+
+https://phoenixnap.com/kb/how-to-install-anaconda-ubuntu-18-04-or-20-04
