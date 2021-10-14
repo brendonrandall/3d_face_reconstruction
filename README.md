@@ -95,7 +95,7 @@ Then, run the test script:
 python test.py --name=<model_name> --epoch=20 --img_folder=<folder_to_test_images>
 
 # get reconstruction results of example images
-python test.py --name=<model_name> --epoch=20 --img_folder=./datasets/examples
+python test.py --name=generic --epoch=20 --img_folder=./datasets/examples
 ```
 
 Results will be saved into ./checkpoints/<model_name>/results/<folder_to_test_images>, which contain the following files:
