@@ -10,7 +10,7 @@ from . import util, html
 from subprocess import Popen, PIPE
 from torch.utils.tensorboard import SummaryWriter
 
-def save_images(webpage, visuals, image_path, aspect_ratio=1.0, width=256):
+def save_images(webpage, visuals, image_path, aspect_ratio=1.0, width=1024):
     """Save images to the disk.
 
     Parameters:
