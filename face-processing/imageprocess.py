@@ -6,31 +6,34 @@ import shutil
 
 import numpy as np
 import dlib
+
+
+from mtcnn import MTCNN
+import cv2
+
+
 import imutils
 from imutils import face_utils
 import matplotlib.pyplot as plt
 from skimage import io
 
+#set up argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", dest="input_image", required="TRUE", type=argparse.FileType('r'))
 parser.add_argument("-d", dest="dataset_name")
 args = parser.parse_args()
 
-#print(dlib.__version__)
-#print(imutils.__version__)
+#set input vars
 input_image_path = os.path.abspath(args.input_image.name)
 input_image_file = args.input_image.name
 
+#set dataset var based on optional arg
 if args.dataset_name is not None:
     dataset_name = args.dataset_name
 else:
     dataset_name = Path(input_image_path).stem
 
-#print(os.path.abspath(args.input_image.name))
-#print(args.input_image.name)
-#print(Path(os.path.abspath(args.input_image.name)).stem)
-
-
+#set output vars
 output_path = os.path.join('../datasets/', dataset_name)
 if not os.path.exists(output_path):
     os.makedirs(output_path, exist_ok=True)
@@ -39,29 +42,19 @@ if not os.path.exists(output_detections_path):
     os.makedirs(output_detections_path, exist_ok=True)
 output_detections_file = os.path.join(output_detections_path,Path(input_image_path).stem+'.txt')
 
-predictor_path = "shape_predictor_5_face_landmarks.dat"
-
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(predictor_path)
-img = dlib.load_rgb_image(input_image_path)
-
-rect = detector(img)[0]
-sp = predictor(img, rect)
-landmarks = np.array([[p.x, p.y] for p in sp.parts()])
-
-print(landmarks)
-#for x in landmarks:
-    #print(x)
- 
-#f = open( 'inputimage.txt', 'w' )
-#f.write( landmarks )
-#f.close()
-
-#np.savetxt("inputimage.txt",x)
-mat = np.matrix(landmarks)
-with open(output_detections_file,'wb') as f:
-    for line in mat:
-        np.savetxt(f, line, fmt='%.2f')
-
-
+#load the image and detect landmarks
+img = cv2.cvtColor(cv2.imread(input_image_path), cv2.COLOR_BGR2RGB)
+detector = MTCNN()
+result = detector.detect_faces(img)
+keypoints = result[0]['keypoints']
+    
+#copy the image to the dataset folder
 shutil.copy2(input_image_path,output_path)
+
+#write the landmarks to the detections folder in the dataset folder
+with open(output_detections_file,'w') as f:
+    f.write(str(keypoints['left_eye'][0])+' '+str(keypoints['left_eye'][1])+'\n')
+    f.write(str(keypoints['right_eye'][0])+' '+str(keypoints['right_eye'][1])+'\n')
+    f.write(str(keypoints['nose'][0])+' '+str(keypoints['nose'][1])+'\n')
+    f.write(str(keypoints['mouth_left'][0])+' '+str(keypoints['mouth_left'][1])+'\n')
+    f.write(str(keypoints['mouth_right'][0])+' '+str(keypoints['mouth_right'][1])+'\n')
