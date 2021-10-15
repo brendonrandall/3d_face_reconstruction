@@ -34,21 +34,25 @@ args = parser.parse_args()
 for entry in os.scandir(args.input_path):
     if (entry.path.endswith(".jpg") 
         or entry.path.endswith(".png")) and entry.is_file():
-            print(entry.path)
+            #print(entry.path)
+            
+            #set input vars
+            input_image_path = entry.path
+            input_image_file = entry.name
+
+            #set dataset var based on optional arg
+            if args.dataset_name is not None:
+                dataset_name = args.dataset_name
+            else:
+                dataset_name = Path(input_image_path).stem
     else:
         continue
-
+print(dataset_name)
 os._exit()
 
-#set input vars
-input_image_path = os.path.abspath(args.input_image.name)
-input_image_file = args.input_image.name
 
-#set dataset var based on optional arg
-if args.dataset_name is not None:
-    dataset_name = args.dataset_name
-else:
-    dataset_name = Path(input_image_path).stem
+
+
 
 #set output vars
 output_path = os.path.join('../datasets/', dataset_name)
