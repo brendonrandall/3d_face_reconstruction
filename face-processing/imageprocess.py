@@ -28,7 +28,7 @@ def dir_path(path):
 parser = argparse.ArgumentParser()
 #parser.add_argument("-i", dest="input_image", required="TRUE", type=argparse.FileType('r'))
 parser.add_argument('-i', dest="input_path", required="TRUE", type=dir_path)
-parser.add_argument('-o', dest="calculated_output_path", required="TRUE", type=dir_path)
+parser.add_argument('-o', dest="output_path", required="TRUE", type=dir_path)
 parser.add_argument("-n", dest="dataset_name")
 args = parser.parse_args()
 
