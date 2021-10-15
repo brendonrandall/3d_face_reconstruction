@@ -31,9 +31,10 @@ parser.add_argument('-path', dest="input_path", required="TRUE", type=dir_path)
 parser.add_argument("-d", dest="dataset_name")
 args = parser.parse_args()
 
-for entry in os.scandir(input_path):
-    if filename.endswith(".jpg") or filename.endswith(".png"):
-        print(os.path.join(directory, filename))
+for entry in os.scandir(args.input_path):
+    if (entry.path.endswith(".jpg") 
+        or entry.path.endswith(".png")) and entry.is_file():
+            print(entry.path)
     else:
         continue
 
