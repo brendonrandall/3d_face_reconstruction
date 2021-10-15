@@ -17,11 +17,27 @@ from imutils import face_utils
 import matplotlib.pyplot as plt
 from skimage import io
 
+#define the path setting arg
+def dir_path(path):
+    if os.path.isdir(path):
+        return path
+    else:
+        raise argparse.ArgumentTypeError(f"readable_dir:{path} is not a valid path")
+
 #set up argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("-i", dest="input_image", required="TRUE", type=argparse.FileType('r'))
+#parser.add_argument("-i", dest="input_image", required="TRUE", type=argparse.FileType('r'))
+parser.add_argument('-path', dest="input_path", required="TRUE", type=dir_path)
 parser.add_argument("-d", dest="dataset_name")
 args = parser.parse_args()
+
+for entry in os.scandir(input_path):
+    if filename.endswith(".jpg") or filename.endswith(".png"):
+        print(os.path.join(directory, filename))
+    else:
+        continue
+
+os._exit()
 
 #set input vars
 input_image_path = os.path.abspath(args.input_image.name)
@@ -58,3 +74,4 @@ with open(output_detections_file,'w') as f:
     f.write(str(keypoints['nose'][0])+' '+str(keypoints['nose'][1])+'\n')
     f.write(str(keypoints['mouth_left'][0])+' '+str(keypoints['mouth_left'][1])+'\n')
     f.write(str(keypoints['mouth_right'][0])+' '+str(keypoints['mouth_right'][1])+'\n')
+

@@ -45,7 +45,7 @@ class HTML:
         with self.doc:
             h3(text)
 
-    def add_images(self, ims, txts, links, width=1024):
+    def add_images(self, ims, txts, links, width=400):
         """add images to the HTML file
 
         Parameters:
